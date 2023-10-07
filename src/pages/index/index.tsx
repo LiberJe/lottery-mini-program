@@ -16,6 +16,8 @@ export default function Index() {
         // 传递给云函数的event参数
         data: {
           ids: ["ssq", "sd", "pls", "plw", "qlc", "dlt", "qxc"],
+          type: 'dlt',
+          payload: {}
         }
       }).then(res => {
         console.log(1111,res)
