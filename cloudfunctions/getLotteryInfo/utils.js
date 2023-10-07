@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs */
 /**
     统一格式
     {
@@ -19,6 +20,8 @@
     }
 */
 
+const { lotteryRuleMap } = require('./common').default;
+
 const chinaNumber = [
     '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', 
     '十一', '十一', '十二', '十三', '十四', '十五',
@@ -33,6 +36,7 @@ function formatWelfareData(type, payload) {
             name: payload.name,
             nums_1: payload.red.split(','),
             nums_2: payload.blue.split(','),
+            rule: lotteryRuleMap[type],
             salesmoney: payload.sales,
             poolmoney: payload.poolmoney,
             prizegrades: payload.prizegrades.map((item, index) => {
@@ -73,6 +77,7 @@ function formatMotionData(type, payload) {
             name: payload.lotteryGameName,
             nums_1,
             nums_2,
+            rule: lotteryRuleMap[type],
             salesmoney: payload.totalSaleAmount,
             poolmoney: payload.poolBalanceAfterdraw,
             prizegrades: payload.prizeLevelList.map((item, index) => {

@@ -1,4 +1,123 @@
 
 .container {
-  background-color: green;
+  border-radius: 20rpx;
+  background-image: linear-gradient(to right, #FFCDD2 0%, #FFEBEE 100%);
+  padding: 20rpx;
 }
+
+.topWrap, .middleWrap, .bottomWrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lotteryType {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.lotteryTypeName {
+  color: red;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.lotteryTypeSep {
+  background-color: #FFCDD2;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  margin: 0 8rpx;
+}
+
+.lotteryNumber {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #444;
+}
+
+.resultTimeText {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #444;
+  /* color: rgba(102,102,102,1); */
+}
+
+.middleWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16rpx 0;
+}
+
+.numsWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.arrowWrap {
+  flex:1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.arrowImg {
+  width: 40rpx;
+  height: 40rpx;
+  /* background-color: red; */
+  /* background: url('../../assets/arrow-right.png'); */
+  /* background: url('src/assets/arrow-right.png'); */
+}
+
+.normalNumItem {
+  background-color: #E53935;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.specialNumItem {
+  background-color: #1E88E5;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+
+.openTime {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #444;
+}
+
+.bonusAmountText1 {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #444;
+}
+
+.bonusAmountText2 {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: red;
+}
+
+

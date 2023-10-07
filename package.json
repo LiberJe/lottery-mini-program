@@ -61,7 +61,7 @@
     "@types/react": "^18.2.23",
     "@tarojs/mini-runner": "3.6.17",
     "@tarojs/webpack-runner": "3.6.17",
-    "webpack": "5.88.2",
+    "webpack": "^4.0.0",
     "babel-preset-taro": "3.6.17",
     "eslint-config-taro": "3.6.17",
     "eslint": "^8.50.0",

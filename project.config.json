@@ -1,9 +1,7 @@
 {
   "miniprogramRoot": "dist/",
   "cloudfunctionRoot": "cloudfunctions/",
-  "projectname": "lottery",
   "description": "",
-  "appid": "wxa8b0377d6d77f91f",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -18,19 +16,23 @@
     },
     "condition": false,
     "minifyWXSS": false,
-    "minifyWXML": false
+    "minifyWXML": false,
+    "coverView": false,
+    "showShadowRootInWxmlPanel": false,
+    "packNpmRelationList": [],
+    "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.1.0",
   "srcMiniprogramRoot": "dist/",
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wxa8b0377d6d77f91f"
 }

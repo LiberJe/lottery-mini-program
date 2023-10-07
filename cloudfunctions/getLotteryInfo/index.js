@@ -21,31 +21,36 @@ exports.main = async (event, context) => {
   // 获取基础信息
   const wxContext = cloud.getWXContext();
 
-  const { ids, type, payload } = event
+  const { funcName, params } = event
+  const { type, payload } = params || {}
 
   console.log(wxContext, event, context, api)
 
-  const res = await api.getLotteryDetail(type, payload)
-  data = await res.json()
+  const func = api[funcName]
+
+  const res = await func(type, payload)
+
+  // const res = await api.getLotteryDetail(type, payload)
+  // data = await res.json()
   console.log(2222, res, data)
 
-  if (lotteryTypeMap[type] === 'welfare') {
-    data = {
-      pageNo: data.pageNo,
-      pageNum: data.pageNum,
-      pageSize: data.pageSize,
-      total: data.total,
-      list: formatWelfareData(type, data.result)
-    }
-  } else if (lotteryTypeMap[type] === 'motion') {
-    data = {
-      pageNo: data.value.pageNo,
-      pageNum: data.value.pages,
-      pageSize: data.value.pageSize,
-      total: data.value.total,
-      list: formatMotionData(type, data.value?.list)
-    }
-  }
+  // if (lotteryTypeMap[type] === 'welfare') {
+  //   data = {
+  //     pageNo: data.pageNo,
+  //     pageNum: data.pageNum,
+  //     pageSize: data.pageSize,
+  //     total: data.total,
+  //     list: formatWelfareData(type, data.result)
+  //   }
+  // } else if (lotteryTypeMap[type] === 'motion') {
+  //   data = {
+  //     pageNo: data.value.pageNo,
+  //     pageNum: data.value.pages,
+  //     pageSize: data.value.pageSize,
+  //     total: data.value.total,
+  //     list: formatMotionData(type, data.value?.list)
+  //   }
+  // }
 
 
   // const response = await Promise.all(
@@ -64,5 +69,5 @@ exports.main = async (event, context) => {
   // const data = response
   // console.log(3333, response)
 
-  return data;
+  return res;
 };

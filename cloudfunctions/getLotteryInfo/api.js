@@ -1,5 +1,10 @@
+/* eslint-disable import/no-commonjs */
 const fetch = require('node-fetch')
 const { lotteryTypeMap } = require('./common').default;
+const {
+    formatMotionData,
+    formatWelfareData
+} = require('./utils').default
 
 const mixedUrl = (url = '', obj = {}) => {
     let querys = Object.keys(obj).map(key => `${key}=${obj[key]}`).join('&')
@@ -91,12 +96,55 @@ const lotteryReqMap = {
     },
 }
 
+async function getLotteryDetail (type = '', payload) {
+    if (!type) return Promise.resolve(null)
+
+    const reqType = lotteryTypeMap[type]
+    let data = await lotteryReqMap[reqType](type, payload)
+    data = await data.json()
+
+    if (lotteryTypeMap[type] === 'welfare') {
+        data = {
+            type,
+            pageNo: data.pageNo,
+            pageNum: data.pageNum,
+            pageSize: data.pageSize,
+            total: data.total,
+            list: formatWelfareData(type, data.result)
+        }
+    } else if (lotteryTypeMap[type] === 'motion') {
+        data = {
+            type,
+            pageNo: data.value.pageNo,
+            pageNum: data.value.pages,
+            pageSize: data.value.pageSize,
+            total: data.value.total,
+            list: formatMotionData(type, data.value?.list)
+        }
+    }
+
+    return data
+}
+
+async function getBatchLotteryDetail () {
+    const reqItem = [
+        // "ssq", 
+        // "kl8", 
+        // "3d", 
+        // "qlc", 
+        "dlt", 
+        "qxc"
+    ]
+    const response = await Promise.all(
+        reqItem.map(item => getLotteryDetail(item))
+    )
+
+    return response
+        
+}
+
 
 exports.default = {
-    getLotteryDetail (type = '', payload) {
-        if (!type) return Promise.resolve(null)
-
-        const reqType = lotteryTypeMap[type]
-        return lotteryReqMap[reqType](type, payload)
-    }
+    getLotteryDetail,
+    getBatchLotteryDetail,
 }
